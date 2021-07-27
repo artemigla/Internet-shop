@@ -1,0 +1,33 @@
+.nav {
+    justify-self: end;
+    align-self: flex-end;
+    margin-right: 10px;
+    .position {
+        display: flex;
+    }
+
+    a {
+        text-decoration: none;
+        color: white;
+        font-size: 21px;
+        margin-left: 10px;
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+            background-color: skyblue;
+            border-radius: 5px;
+            padding: 3px;
+            color: #0000ff;
+        }
+    }
+
+    li {
+        list-style-type: none;
+        margin-bottom: 3px;
+    }
+
+    ul {
+        margin-left: 0;
+        padding-left: 0;
+    }
+}

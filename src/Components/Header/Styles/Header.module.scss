@@ -1,0 +1,23 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+$colorNameShop: #fff;
+
+.header {
+    display: grid;
+    background-color: coral;
+    width: 100%;
+    height: 125px;
+    grid-template-columns: 1fr 3fr;
+    h2 {
+        color: $colorNameShop;
+        justify-self: flex-start;
+        align-self: center;
+        white-space: nowrap;
+        padding: 10px;
+        background: linear-gradient(blue, yellow);
+        transform: rotate(-15deg);
+    }
+}
