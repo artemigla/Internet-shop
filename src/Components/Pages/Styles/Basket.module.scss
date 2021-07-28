@@ -1,0 +1,15 @@
+.basket {
+    display: grid;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-color: blueviolet;
+    top: 125px;
+    z-index: -1;
+}
+
+@media screen and (max-width: 720px) {
+    .basket {
+        top: 90px;
+    }
+}

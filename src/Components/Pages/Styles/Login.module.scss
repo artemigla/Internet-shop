@@ -1,0 +1,35 @@
+.formlogin {
+    position: relative;
+    width: 50%;
+    height: auto;
+    top: 150px;
+    margin: auto;
+    background-color: gray;
+    border-radius: 10px;
+    z-index: -1;
+
+    .formheader {
+        text-align: center;
+    }
+    
+    .inputs {
+        display: grid;
+        flex-direction: column;
+        width: 210px;
+        margin: auto;
+        margin-bottom: 10px;
+        padding-top: 10px;
+        gap: 10px;
+        align-items: center;
+        justify-content: center;
+
+        button {
+            margin-bottom: 10px;
+        }
+    }
+
+    button:disabled {
+        cursor: not-allowed;
+        pointer-events: all !important;
+    }
+}

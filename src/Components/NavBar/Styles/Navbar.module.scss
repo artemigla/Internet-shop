@@ -30,4 +30,42 @@
         margin-left: 0;
         padding-left: 0;
     }
+
+    .btn {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 720px) {
+    .nav {
+        z-index: 10;
+        .position {
+            display: none;
+        }
+        .btn {
+            position: absolute;
+            display: flex;
+            color: white;
+            background-color: gray;
+            right: 15px;
+            font-size: 45px;
+            top: 25px;
+            border: none;
+            cursor: pointer;
+            outline: none;
+            transition: all 1s ease;
+        }
+        .navMobile {
+            position: absolute;
+            display: block;
+            text-align: center;
+            list-style: none;
+            background-color: rgb(235, 195, 135);
+            left: 0;
+            font-size: 30px;
+            top: 90px;
+            transition: all 0.5s ease-out;
+            width: 100%;
+        }
+    }
 }

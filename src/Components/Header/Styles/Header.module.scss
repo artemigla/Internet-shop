@@ -7,10 +7,12 @@ $colorNameShop: #fff;
 
 .header {
     display: grid;
+    position: fixed;
     background-color: coral;
     width: 100%;
     height: 125px;
     grid-template-columns: 1fr 3fr;
+    z-index: 10;
     h2 {
         color: $colorNameShop;
         justify-self: flex-start;
@@ -19,5 +21,15 @@ $colorNameShop: #fff;
         padding: 10px;
         background: linear-gradient(blue, yellow);
         transform: rotate(-15deg);
+    }
+}
+
+@media screen and (max-width: 720px) {
+    .header {
+        height: 90px;
+        h2 {
+            padding: 5px;
+            transform: rotate(0deg);
+        }
     }
 }
