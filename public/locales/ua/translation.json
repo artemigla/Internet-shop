@@ -1,0 +1,20 @@
+{
+    "description": {
+        "home": "Головна",
+        "basket": "Корзина",
+        "login": "Вхід",
+        "signup": "Реєстрація",
+        "inputfielderror": "Поле не може бути порожнім!",
+        "invalidinput": "Некоректне введення поля!",
+        "errorpassword": "Пароль має бути від 8 до 20 символів!",
+        "passwords": "Паролі не співпадають!",
+        "confirmpassword": "Підтвердіть пароль",
+        "enterlogin": "Введіть логін",
+        "enterpassword": "Введіть пароль",
+        "errorentername": "Им'я має бути від 2 до 17 символів!",
+        "firstname": "Введіть ваше им'я",
+        "lastname": "Введіть ваше прізвище",
+        "mail": "Email",
+        "remember": "Запам'ятати мене!"
+    }
+}

@@ -1,0 +1,20 @@
+{
+    "description": {
+        "home": "Home page",
+        "basket": "Basket",
+        "login": "Login",
+        "signup": "Sign up",
+        "inputfielderror": "The field cannot be empty!",
+        "invalidinput": "Invalid input!",
+        "errorpassword": "Password must be between 8 and 20 characters!",
+        "passwords": "Password mismatch!",
+        "confirmpassword": "Confirm password",
+        "enterlogin": "Enter login",
+        "enterpassword": "Enter password",
+        "errorentername": "Name must be between 2 and 17 characters!",
+        "firstname": "First name",
+        "lastname": "Last name",
+        "mail": "Email",
+        "remember": "Remember me!"
+    }
+}

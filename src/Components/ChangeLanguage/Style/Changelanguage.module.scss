@@ -1,0 +1,34 @@
+.content {
+    display: flex;
+    margin-right: 10px;
+
+    .eng {
+        width: 30px;
+        height: 20px;
+        margin-right: 5px;
+        background-image: url("../Images/English.png");
+        background-size: 100%;
+        border: none;
+        cursor: pointer;
+    }
+
+    .ru {
+        width: 30px;
+        height: 20px;
+        margin-right: 5px;
+        background-image: url("../Images/Russian.png");
+        background-size: 100%;
+        border: none;
+        cursor: pointer;
+    }
+
+    .ua {
+        width: 30px;
+        height: 20px;
+        margin-right: 5px;
+        background-image: url("../Images/Ukraine.png");
+        background-size: 100%;
+        border: none;
+        cursor: pointer;
+    }
+}

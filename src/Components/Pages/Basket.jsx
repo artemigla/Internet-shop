@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './Styles/Basket.module.scss';
 const Basket = () => {
-    return(
+    return (
         <div className={style.basket}>Basket</div>
     )
 }

@@ -1,0 +1,20 @@
+{
+    "description": {
+        "home": "Главная",
+        "basket": "Корзина",
+        "login": "Вход",
+        "signup": "Регистрация",
+        "inputfielderror": "Поле не может быть пустым!",
+        "invalidinput": "Некорректный ввод!",
+        "errorpassword": "Пароль должен быть от 8 до 20 символов!",
+        "passwords": "Пароли не совпадают!",
+        "confirmpassword": "Подтвердите пароль",
+        "enterlogin": "Введите логин",
+        "enterpassword": "Введите пароль",
+        "errorentername": "Имя должно быть от 2 до 17 символов!",
+        "firstname": "Введите ваше имя",
+        "lastname": "Введите вашу фамилию",
+        "mail": "Email",
+        "remember": "Запомнить меня!"
+    }
+}

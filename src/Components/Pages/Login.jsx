@@ -1,21 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import style from './Styles/Login.module.scss';
+import { useTranslation } from "react-i18next";
 const Login = () => {
+
+    const { t } = useTranslation();
 
     const [mail, setMail] = useState('');
     const [emailDirty, setEmailDirty] = useState(false);
-    const [emailError, setEmailError] = useState("Поле не может быть пустым");
+    const [emailError, setEmailError] = useState(t("description.inputfielderror"));
 
     const [password, setPassword] = useState('');
     const [passwordDirty, setPasswordDirty] = useState(false);
-    const [passwordError, setPasswordError] = useState("Поле не может быть пустым");
+    const [passwordError, setPasswordError] = useState(t("description.inputfielderror"));
 
     const [formValid, setFormValid] = useState(false);
     const emailHandler = (e) => {
         setMail(e.target.value);
         const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         if (!regex.test(String(e.target.value).toLowerCase())) {
-            setEmailError("Некорректный ввод!");
+            setEmailError(t("description.invalidinput"));
         } else {
             setEmailError('');
         }
@@ -24,9 +27,9 @@ const Login = () => {
     const passwordHandler = (e) => {
         setPassword(e.target.value);
         if (e.target.value.length < 8 || e.target.value.length > 21) {
-            setPasswordError("Пароль должен быть от 8 до 20 символов");
+            setPasswordError(t("description.errorpassword"));
             if (!e.target.value) {
-                setPasswordError("Поле не может быть пустым");
+                setPasswordError(t("description.inputfielderror"));
             }
         } else {
             setPasswordError('');
@@ -56,7 +59,7 @@ const Login = () => {
 
     return (
         <form action="form" className={style.formlogin}>
-            <h3 className={style.formheader}>Логин</h3>
+            <h3 className={style.formheader}>{t("description.login")}</h3>
             <div className={style.inputs}>
                 {(emailDirty && emailError) && <div style={{ color: "red" }}>{emailError}</div>}
                 <input
@@ -65,7 +68,7 @@ const Login = () => {
                     onBlur={(e) => blurHandler(e)}
                     name="email"
                     type="email"
-                    placeholder={"Введите логин"}
+                    placeholder={t("description.enterlogin")}
                 />
 
                 {(passwordDirty && passwordError) && <div style={{ color: "red" }}>{passwordError}</div>}
@@ -74,10 +77,11 @@ const Login = () => {
                     value={password}
                     onBlur={(e) => blurHandler(e)}
                     name="password"
-                    placeholder={"Введите пароль"}
+                    type="password"
+                    placeholder={t("description.enterpassword")}
                 />
 
-                <button disabled={!formValid}>Войти</button>
+                <button disabled={!formValid}>{t("description.login")}</button>
             </div>
         </form>
     )

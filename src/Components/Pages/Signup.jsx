@@ -1,36 +1,38 @@
 import React, { useState, useEffect } from 'react';
 import style from './Styles/Signup.module.scss';
+import { useTranslation } from "react-i18next";
 const Signup = () => {
 
+    const { t } = useTranslation();
     const [firstName, setFirstName] = useState("");
     const [firstNameDirty, setFirstNameDirty] = useState(false);
-    const [firstNameError, setFirstNameError] = useState("Поле не может быть пустым!");
+    const [firstNameError, setFirstNameError] = useState(t("description.inputfielderror"));
 
     const [lastName, setLastName] = useState("");
     const [lastNameDirty, setLastNameDirty] = useState(false);
-    const [lastNameError, setLastNameError] = useState("Поле не может быть пустым!");
+    const [lastNameError, setLastNameError] = useState(t("description.inputfielderror"));
 
     const [mail, setMail] = useState('');
     const [emailDirty, setEmailDirty] = useState(false);
-    const [emailError, setEmailError] = useState("Поле не может быть пустым!");
+    const [emailError, setEmailError] = useState(t("description.inputfielderror"));
 
 
     const [password, setPassword] = useState('');
     const [passwordDirty, setPasswordDirty] = useState(false);
-    const [passwordError, setPasswordError] = useState("Поле не может быть пустым!");
+    const [passwordError, setPasswordError] = useState(t("description.inputfielderror"));
 
     const [confirmPassword, setConfirmPassword] = useState('');
     const [consfirmPasswordDirty, setConfirmPasswordDirty] = useState(false);
-    const [confirmPasswordError, setConfirmPasswordError] = useState("Поле не может быть пустым!")
+    const [confirmPasswordError, setConfirmPasswordError] = useState(t("description.inputfielderror"))
 
     const [formValid, setFormValid] = useState(false);
 
     const firstNameHandler = (e) => {
         setFirstName(e.target.value);
         if (e.target.value.length < 2 || e.target.value.length > 18) {
-            setFirstNameError("Имя должно быть от 2 до 17 символов");
+            setFirstNameError(t("description.errorentername"));
             if (!e.target.value) {
-                setFirstNameError("Поле не может быть пустым");
+                setFirstNameError(t("description.inputfielderror"));
             }
         } else {
             setFirstNameError('');
@@ -40,7 +42,7 @@ const Signup = () => {
     const lastNameHandler = (e) => {
         setLastName(e.target.value);
         if (!e.target.value) {
-            setLastNameError("Поле не может быть пустым");
+            setLastNameError(t("description.inputfielderror"));
         } else {
             setLastNameError('');
         }
@@ -50,7 +52,7 @@ const Signup = () => {
         setMail(e.target.value);
         const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         if (!regex.test(String(e.target.value).toLowerCase())) {
-            setEmailError("Некорректный ввод");
+            setEmailError(t("description.invalidinput"));
         } else {
             setEmailError('');
         }
@@ -59,9 +61,9 @@ const Signup = () => {
     const passwordHandler = (e) => {
         setPassword(e.target.value);
         if (e.target.value.length < 7 || e.target.value.length > 21) {
-            setPasswordError("Пароль должен быть от 8 до 20 символов");
+            setPasswordError(t("description.errorpassword"));
             if (!e.target.value) {
-                setPasswordError("Пароль должен быть от 8 до 20 символов");
+                setPasswordError(t("description.invalidinput"));
             }
         } else {
             setPasswordError('');
@@ -73,7 +75,7 @@ const Signup = () => {
         if (password !== e.target.value) {
             setConfirmPasswordError("Пароли не совпадают");
             if (!e.target.value) {
-                setConfirmPasswordError("Поле не может быть пустым!");
+                setConfirmPasswordError(t("description.inputfielderror"));
             }
         } else {
             setConfirmPasswordError('');
@@ -112,7 +114,7 @@ const Signup = () => {
 
     return (
         <form action="form" className={style.signup}>
-            <h3 className={style.formheader}>Регистрация</h3>
+            <h3 className={style.formheader}>{t("description.signup")}</h3>
             <div className={style.modalbody}>
                 {(firstNameDirty && firstNameError) && <div style={{ color: "red" }}>{firstNameError}</div>}
                 <input
@@ -121,7 +123,7 @@ const Signup = () => {
                     type="text"
                     value={firstName}
                     onBlur={(e) => blurHandler(e)}
-                    placeholder={"Введите имя"}
+                    placeholder={t("description.firstname")}
                 />
                 <br /><br />
 
@@ -132,7 +134,7 @@ const Signup = () => {
                     name="lastName"
                     value={lastName}
                     onBlur={(e) => blurHandler(e)}
-                    placeholder={"Введите фамилию"}
+                    placeholder={t("description.lastname")}
                 />
                 <br /><br />
 
@@ -143,7 +145,7 @@ const Signup = () => {
                     onBlur={e => blurHandler(e)}
                     name="email"
                     type="email"
-                    placeholder={"Введите E-mail"}
+                    placeholder={t("description.mail")}
                 />
                 <br /><br />
 
@@ -153,7 +155,7 @@ const Signup = () => {
                     onBlur={e => blurHandler(e)}
                     name="password"
                     type="password"
-                    placeholder={"Пароль"}
+                    placeholder={t("description.enterpassword")}
                 />
                 <br /><br />
 
@@ -164,13 +166,13 @@ const Signup = () => {
                     onBlur={(e) => blurHandler(e)}
                     name="confirmPassword"
                     type="password"
-                    placeholder={"Подтвердите пароль"}
+                    placeholder={t("description.confirmpassword")}
                 />
                 <br /><br />
                 <div className={style.check}>
-                    <input type="checkbox" /><h5>{"Запомнить"}</h5>
+                    <input type="checkbox" /><h5>{t("description.remember")}</h5>
                 </div>
-                <button disabled={!formValid} ><h4>{"Зарегистрироваться"}</h4> </button>
+                <button disabled={!formValid} ><h4>{t("description.signup")}</h4> </button>
             </div>
         </form>
     )
