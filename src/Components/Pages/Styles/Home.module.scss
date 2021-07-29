@@ -1,15 +1,100 @@
-.content {
+.plane {
     display: grid;
+    position: fixed;
+    grid-template-columns: 3fr 1fr;
+    gap: 10px;
     position: relative;
     width: 100%;
-    height: 100vh;
+    height: 100% auto;
     top: 125px;
-    background-color: blue;
-    z-index: -1;
+
+    .grid {
+        display: grid;
+        justify-content: space-around;
+
+        .item {
+            object-fit: cover;
+            display: grid;
+            justify-content: space-around;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 10px;
+            z-index: 10;
+        }
+    }
+
+    .sizeimg img {
+        display: grid;
+        width: 80%;
+        height: 60%;
+        margin: 0% auto;
+        padding: 5px;
+    }
+
+    .size {
+        width: 300px auto;
+        height: 20rem;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        margin: 0;
+        padding: 0;
+
+        .icon {
+            margin-left: 90%;
+            font-size: 21px;
+        }
+    }
+
+    .downblockcontent button {
+        width: 100%;
+        background-color: green;
+        border: none;
+        padding: 6px;
+        cursor: pointer;
+        font-size: 21px;
+    }
+
+    h5 {
+        font-size: 17px;
+        text-align: end;
+    }
+
+    .size-img h5,
+    h4 {
+        text-align: center;
+        padding: 5px;
+    }
+
+    .rightsidebar {
+        display: grid;
+        height: 100% auto;
+        top: 90px;
+
+        background-color: gray;
+        .navrightsidebar {
+            position: fixed;
+        }
+    }
+
+    .rightcontent {
+        position: fixed;
+        display: grid;
+        margin-top: 30px;
+
+        .searchitem {
+            border: none;
+            outline: none;
+            padding: 3px;
+            border-radius: 5px;
+            text-align: center;
+            background-color: indigo;
+            color: white;
+            font-size: 17px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+    }
 }
 
 @media screen and (max-width: 720px) {
-    .content {
+    .plane {
         top: 90px;
     }
 }

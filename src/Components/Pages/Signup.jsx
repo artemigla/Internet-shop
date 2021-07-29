@@ -22,8 +22,8 @@ const Signup = () => {
     const [passwordError, setPasswordError] = useState(t("description.inputfielderror"));
 
     const [confirmPassword, setConfirmPassword] = useState('');
-    const [consfirmPasswordDirty, setConfirmPasswordDirty] = useState(false);
-    const [confirmPasswordError, setConfirmPasswordError] = useState(t("description.inputfielderror"))
+    const [confirmPasswordDirty, setConfirmPasswordDirty] = useState(false);
+    const [confirmPasswordError, setConfirmPasswordError] = useState(t("description.inputfielderror"));
 
     const [formValid, setFormValid] = useState(false);
 
@@ -73,7 +73,7 @@ const Signup = () => {
     const confirmPasswordHandler = (e) => {
         setConfirmPassword(e.target.value);
         if (password !== e.target.value) {
-            setConfirmPasswordError("Пароли не совпадают");
+            setConfirmPasswordError(t("description.passwords"));
             if (!e.target.value) {
                 setConfirmPasswordError(t("description.inputfielderror"));
             }
@@ -159,7 +159,7 @@ const Signup = () => {
                 />
                 <br /><br />
 
-                {(consfirmPasswordDirty && confirmPasswordError) && <div style={{ color: "red" }}>{confirmPasswordError}</div>}
+                {(confirmPasswordDirty && confirmPasswordError) && <div style={{ color: "red" }}>{confirmPasswordError}</div>}
                 <input
                     onChange={(e) => confirmPasswordHandler(e)}
                     value={confirmPassword}

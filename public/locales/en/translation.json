@@ -15,6 +15,9 @@
         "firstname": "First name",
         "lastname": "Last name",
         "mail": "Email",
-        "remember": "Remember me!"
+        "remember": "Remember me!",
+        "addgood": "Add to cart",
+        "sortprice": "Sort by price",
+        "sortname": "Sort by device name"
     }
 }
