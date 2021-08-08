@@ -9,9 +9,6 @@ const Header = ({ data }) => {
             <h2>{data}</h2>
             <div className={style.content}>
                 <div className={style.nav}>
-                    Dark mode
-                </div>
-                <div className={style.nav}>
                     <Changelanguage />
                 </div>
                 <Navbar />
@@ -21,6 +18,6 @@ const Header = ({ data }) => {
 }
 
 Header.prototype = {
-    data: PropTypes.string
+    data: PropTypes.string.isRequired
 }
 export default Header;

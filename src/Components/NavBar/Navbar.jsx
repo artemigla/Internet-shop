@@ -14,10 +14,8 @@ const Navbar = () => {
                 <li><Link to="/login">{t("description.login")}</Link></li>
                 <li><Link to="/signup">{t("description.signup")}</Link></li>
             </ul>
-
             <button className={style.btn} onClick={() => setIsOpen(!isOpen)}>{isOpen ? <BiX /> : <BiMenu />}</button>
         </nav>
     )
 }
-
 export default Navbar;

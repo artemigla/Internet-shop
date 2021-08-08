@@ -1,58 +1,21 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import style from './Styles/Home.module.scss';
-import Mobiledevices from '../../Goods/Mobiledevices.jsx';
+import Mobiledevices from '../../Goods/Mobiledevices.js';
 import { useTranslation } from "react-i18next";
+import ShowDevices from './ShowDevices';
+import Pagination from '../pagination/Pagination';
+
 const Home = () => {
 
     const { t } = useTranslation();
-
     const [cartProducts, setCartProducts] = useState([]);
     const [search, setSearch] = useState("");
     const [sortContent, setSortContent] = useState(Mobiledevices);
     const [price, setPrice] = useState(true);
     const [nameProduct, setNameProduct] = useState(true);
-
-    const addToCart = (product) => {
-        let newCart = [...cartProducts];
-
-        let itemInCart = newCart.find(
-            (item) => product.name === item.name
-        );
-        if (itemInCart) {
-            itemInCart.quantity++;
-        } else {
-            itemInCart = {
-                ...product,
-                quantity: 1,
-            };
-            newCart.push(itemInCart);
-        }
-        localStorage.setItem("device", JSON.stringify(newCart));
-        setCartProducts(newCart);
-    };
-
-    const itemList = sortContent.filter((item) => {
-        if (search === "") {
-            return item;
-        } else if (item.name.toLowerCase().includes(search.toLowerCase())) {
-            return item;
-        }
-        return 0;
-    }).map((item) => {
-        return (
-            <div className={style.sizeimg} key={item.id}>
-                <div className={style.size}>
-                    <i className={style.icon}>{item.icon}</i>
-                    <img src={item.img} alt={item.name} />
-                    <h4>{item.name}</h4>
-                    <h5>{item.price}</h5>
-                    <div className={style.downblockcontent}>
-                        <button onClick={() => addToCart(item)}>{t("description.addgood")}</button>
-                    </div>
-                </div>
-            </div>
-        )
-    })
+    const [loading, setLoading] = useState(false)
+    const [currentPage, setCurrentPage] = useState(1);
+    const [cartPerPage] = useState(10);
 
     const SortByCost = () => {
         const sortByCost = Mobiledevices.sort((a, b) => {
@@ -69,7 +32,7 @@ const Home = () => {
     }
 
     const SortByName = () => {
-        const sortByName = Mobiledevices.sort((a, b) => {
+        const sortByName = sortContent.sort((a, b) => {
             if (a.name < b.name) {
                 return -1;
             }
@@ -85,15 +48,30 @@ const Home = () => {
     const handleChange = (event) => {
         event.preventDefault();
         setSearch(event.target.value);
-        console.log(event.target.value);
+    }
+
+    useEffect(() => {
+        const getCountries = () => {
+            setLoading(true);
+            setCartProducts(Mobiledevices);
+            setLoading(false);
+        }
+        getCountries();
+    }, []);
+
+    const lastPageIndex = currentPage * cartPerPage;
+    const firstPageIndex = lastPageIndex - cartPerPage;
+    const currentCountry = cartProducts.slice(firstPageIndex, lastPageIndex);
+
+    const paginate = (pageNumber) => {
+        setCurrentPage(pageNumber);
     }
 
     return (
         <div className={style.plane}>
             <div className={style.grid}>
-                <div className={style.item}>
-                    {itemList}
-                </div>
+                <ShowDevices cartProducts={currentCountry} loading={loading} search={search} setCartProducts={setCartProducts} />
+                <Pagination cartPerPage={cartPerPage} totalCart={cartProducts.length} paginate={paginate} />
             </div>
             <div className={style.rightsidebar}>
                 <div className={style.navrightsidebar}>

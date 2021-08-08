@@ -58,32 +58,36 @@ const Login = () => {
     }, [emailError, passwordError]);
 
     return (
-        <form action="form" className={style.formlogin}>
-            <h3 className={style.formheader}>{t("description.login")}</h3>
-            <div className={style.inputs}>
-                {(emailDirty && emailError) && <div style={{ color: "red" }}>{emailError}</div>}
-                <input
-                    onChange={(e) => emailHandler(e)}
-                    value={mail}
-                    onBlur={(e) => blurHandler(e)}
-                    name="email"
-                    type="email"
-                    placeholder={t("description.enterlogin")}
-                />
+        <div className={style.bgcolor}>
+            <form className={style.formlogin}>
+                <div className={style.content}>
+                    <h3 className={style.formheader}>{t("description.login")}</h3>
+                    <div className={style.inputs}>
+                        {(emailDirty && emailError) && <div style={{ color: "red" }}>{emailError}</div>}
+                        <input
+                            onChange={(e) => emailHandler(e)}
+                            value={mail}
+                            onBlur={(e) => blurHandler(e)}
+                            name="email"
+                            type="email"
+                            placeholder={t("description.enterlogin")}
+                        />
 
-                {(passwordDirty && passwordError) && <div style={{ color: "red" }}>{passwordError}</div>}
-                <input
-                    onChange={(e) => passwordHandler(e)}
-                    value={password}
-                    onBlur={(e) => blurHandler(e)}
-                    name="password"
-                    type="password"
-                    placeholder={t("description.enterpassword")}
-                />
+                        {(passwordDirty && passwordError) && <div style={{ color: "red" }}>{passwordError}</div>}
+                        <input
+                            onChange={(e) => passwordHandler(e)}
+                            value={password}
+                            onBlur={(e) => blurHandler(e)}
+                            name="password"
+                            type="password"
+                            placeholder={t("description.enterpassword")}
+                        />
 
-                <button disabled={!formValid}>{t("description.login")}</button>
-            </div>
-        </form>
+                        <button disabled={!formValid}>{t("description.login")}</button>
+                    </div>
+                </div>
+            </form>
+        </div>
     )
 }
 export default Login;

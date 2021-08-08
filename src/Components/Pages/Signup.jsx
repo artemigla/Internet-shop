@@ -113,68 +113,70 @@ const Signup = () => {
     }, [emailError, passwordError, firstNameError, lastNameError, confirmPasswordError]);
 
     return (
-        <form action="form" className={style.signup}>
-            <h3 className={style.formheader}>{t("description.signup")}</h3>
-            <div className={style.modalbody}>
-                {(firstNameDirty && firstNameError) && <div style={{ color: "red" }}>{firstNameError}</div>}
-                <input
-                    onChange={(e) => firstNameHandler(e)}
-                    name="firstName"
-                    type="text"
-                    value={firstName}
-                    onBlur={(e) => blurHandler(e)}
-                    placeholder={t("description.firstname")}
-                />
-                <br /><br />
+        <div className={style.bgcolor}>
+            <form className={style.signup}>
+                <h3 className={style.formheader}>{t("description.signup")}</h3>
+                <div className={style.modalbody}>
+                    {(firstNameDirty && firstNameError) && <div style={{ color: "red" }}>{firstNameError}</div>}
+                    <input
+                        onChange={(e) => firstNameHandler(e)}
+                        name="firstName"
+                        type="text"
+                        value={firstName}
+                        onBlur={(e) => blurHandler(e)}
+                        placeholder={t("description.firstname")}
+                    />
+                    <br /><br />
 
-                {(lastNameDirty && lastNameError) && <div style={{ color: "red" }}>{lastNameError}</div>}
-                <input
-                    onChange={(e) => lastNameHandler(e)}
-                    type="text"
-                    name="lastName"
-                    value={lastName}
-                    onBlur={(e) => blurHandler(e)}
-                    placeholder={t("description.lastname")}
-                />
-                <br /><br />
+                    {(lastNameDirty && lastNameError) && <div style={{ color: "red" }}>{lastNameError}</div>}
+                    <input
+                        onChange={(e) => lastNameHandler(e)}
+                        type="text"
+                        name="lastName"
+                        value={lastName}
+                        onBlur={(e) => blurHandler(e)}
+                        placeholder={t("description.lastname")}
+                    />
+                    <br /><br />
 
-                {(emailDirty && emailError) && <div style={{ color: "red" }}>{emailError}</div>}
-                <input
-                    onChange={e => emailHandler(e)}
-                    value={mail}
-                    onBlur={e => blurHandler(e)}
-                    name="email"
-                    type="email"
-                    placeholder={t("description.mail")}
-                />
-                <br /><br />
+                    {(emailDirty && emailError) && <div style={{ color: "red" }}>{emailError}</div>}
+                    <input
+                        onChange={e => emailHandler(e)}
+                        value={mail}
+                        onBlur={e => blurHandler(e)}
+                        name="email"
+                        type="email"
+                        placeholder={t("description.mail")}
+                    />
+                    <br /><br />
 
-                {(passwordDirty && passwordError) && <div style={{ color: "red" }}>{passwordError}</div>}
-                <input onChange={(e) => passwordHandler(e)}
-                    value={password}
-                    onBlur={e => blurHandler(e)}
-                    name="password"
-                    type="password"
-                    placeholder={t("description.enterpassword")}
-                />
-                <br /><br />
+                    {(passwordDirty && passwordError) && <div style={{ color: "red" }}>{passwordError}</div>}
+                    <input onChange={(e) => passwordHandler(e)}
+                        value={password}
+                        onBlur={e => blurHandler(e)}
+                        name="password"
+                        type="password"
+                        placeholder={t("description.enterpassword")}
+                    />
+                    <br /><br />
 
-                {(confirmPasswordDirty && confirmPasswordError) && <div style={{ color: "red" }}>{confirmPasswordError}</div>}
-                <input
-                    onChange={(e) => confirmPasswordHandler(e)}
-                    value={confirmPassword}
-                    onBlur={(e) => blurHandler(e)}
-                    name="confirmPassword"
-                    type="password"
-                    placeholder={t("description.confirmpassword")}
-                />
-                <br /><br />
-                <div className={style.check}>
-                    <input type="checkbox" /><h5>{t("description.remember")}</h5>
+                    {(confirmPasswordDirty && confirmPasswordError) && <div style={{ color: "red" }}>{confirmPasswordError}</div>}
+                    <input
+                        onChange={(e) => confirmPasswordHandler(e)}
+                        value={confirmPassword}
+                        onBlur={(e) => blurHandler(e)}
+                        name="confirmPassword"
+                        type="password"
+                        placeholder={t("description.confirmpassword")}
+                    />
+                    <br /><br />
+                    <div className={style.check}>
+                        <input type="checkbox" /><h5>{t("description.remember")}</h5>
+                    </div>
+                    <button disabled={!formValid} ><h4>{t("description.signup")}</h4> </button>
                 </div>
-                <button disabled={!formValid} ><h4>{t("description.signup")}</h4> </button>
-            </div>
-        </form>
+            </form>
+        </div>
     )
 }
 

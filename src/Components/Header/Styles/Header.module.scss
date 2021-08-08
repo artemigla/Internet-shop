@@ -3,25 +3,89 @@
     padding: 0px;
 }
 
+:root {
+    --text-color: #000000;
+    --bg-color: #ffffff;
+}
+
+.darktheme {
+    --text-color: #ffffff;
+    --bg-color: #000000;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 1);
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p {
+        color: var(--text-color);
+    }
+}
+.check {
+    display: flex;
+    position: fixed;
+    margin-left: 80%;
+    z-index: 101;
+
+    input[type="checkbox"] {
+        position: relative;
+        width: 50px;
+        height: 30px;
+        -webkit-appearance: none;
+        background: #c6c6c6;
+        outline: none;
+        border-radius: 20px;
+        box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+        margin-top: 10px;
+        transition: 0.5s;
+    }
+
+    input:checked[type="checkbox"] {
+        background: #03a9f4;
+    }
+
+    input[type="checkbox"]::before {
+        content: "";
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        border-radius: 20px;
+        top: 0%;
+        left: 0%;
+        background: #a1f1f1;
+        transform: scale(1.1);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        transition: 0.5s;
+    }
+
+    input:checked[type="checkbox"]::before {
+        left: 20px;
+    }
+}
+
 $colorNameShop: #fff;
 
 .header {
     display: grid;
     position: fixed;
-    background-color: coral;
+    background-color: var(--bg-color);
     width: 100%;
     height: 125px;
     grid-template-columns: 4fr 4fr;
+    box-shadow: 10px 5px 10px rgba(150, 150, 144, 0.5);
     z-index: 100;
 
     .content {
         display: grid;
         grid-template-rows: 2fr 2fr;
+        background-color: var(--bg-color);
     }
 
     .nav {
         display: flex;
         justify-content: flex-end;
+        margin-top: 10px;
     }
 
     h2 {
