@@ -15,10 +15,10 @@ const Home = () => {
     const [nameProduct, setNameProduct] = useState(true);
     const [loading, setLoading] = useState(false)
     const [currentPage, setCurrentPage] = useState(1);
-    const [cartPerPage] = useState(10);
+    const [cartPerPage] = useState(8);
 
     const SortByCost = () => {
-        const sortByCost = Mobiledevices.sort((a, b) => {
+        const sortByCost = sortContent.sort((a, b) => {
             if (parseInt(a.price) < parseInt(b.price)) {
                 return -1;
             }
@@ -53,15 +53,15 @@ const Home = () => {
     useEffect(() => {
         const getCountries = () => {
             setLoading(true);
-            setCartProducts(Mobiledevices);
+            setCartProducts(sortContent);
             setLoading(false);
         }
         getCountries();
-    }, []);
+    }, [sortContent]);
 
     const lastPageIndex = currentPage * cartPerPage;
     const firstPageIndex = lastPageIndex - cartPerPage;
-    const currentCountry = cartProducts.slice(firstPageIndex, lastPageIndex);
+    const currentProducts = cartProducts.slice(firstPageIndex, lastPageIndex);
 
     const paginate = (pageNumber) => {
         setCurrentPage(pageNumber);
@@ -70,7 +70,7 @@ const Home = () => {
     return (
         <div className={style.plane}>
             <div className={style.grid}>
-                <ShowDevices cartProducts={currentCountry} loading={loading} search={search} setCartProducts={setCartProducts} />
+                <ShowDevices currentProducts={currentProducts} loading={loading} search={search} />
                 <Pagination cartPerPage={cartPerPage} totalCart={cartProducts.length} paginate={paginate} />
             </div>
             <div className={style.rightsidebar}>

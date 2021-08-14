@@ -13,6 +13,7 @@
         "enterpassword": "Введите пароль",
         "errorentername": "Имя должно быть от 2 до 17 символов!",
         "firstname": "Введите ваше имя",
+        "enteronlyletters" : "Введите только буквы!",
         "lastname": "Введите вашу фамилию",
         "mail": "Email",
         "remember": "Запомнить меня!",

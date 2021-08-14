@@ -29,11 +29,14 @@ const Signup = () => {
 
     const firstNameHandler = (e) => {
         setFirstName(e.target.value);
-        if (e.target.value.length < 2 || e.target.value.length > 18) {
+        const regex = /^[a-zа-яё]+$/;
+        if ((e.target.value.length < 2 || e.target.value.length > 18)) {
             setFirstNameError(t("description.errorentername"));
             if (!e.target.value) {
                 setFirstNameError(t("description.inputfielderror"));
             }
+        } else if (!regex.test(String(e.target.value).toLowerCase())) {
+            setFirstNameError(t("description.enteronlyletters"))
         } else {
             setFirstNameError('');
         }
@@ -41,8 +44,11 @@ const Signup = () => {
 
     const lastNameHandler = (e) => {
         setLastName(e.target.value);
+        const regex = /^[a-zа-яё-]+$/;
         if (!e.target.value) {
             setLastNameError(t("description.inputfielderror"));
+        } else if (!regex.test(String(e.target.value).toLowerCase())) {
+            setLastNameError(t("description.enteronlyletters"))
         } else {
             setLastNameError('');
         }
@@ -173,7 +179,7 @@ const Signup = () => {
                     <div className={style.check}>
                         <input type="checkbox" /><h5>{t("description.remember")}</h5>
                     </div>
-                    <button disabled={!formValid} ><h4>{t("description.signup")}</h4> </button>
+                    <button disabled={!formValid}>{t("description.signup")} </button>
                 </div>
             </form>
         </div>

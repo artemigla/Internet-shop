@@ -13,6 +13,7 @@
         "enterpassword": "Enter password",
         "errorentername": "Name must be between 2 and 17 characters!",
         "firstname": "First name",
+        "enteronlyletters" : "Enter only letters!",
         "lastname": "Last name",
         "mail": "Email",
         "remember": "Remember me!",

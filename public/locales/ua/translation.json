@@ -13,6 +13,7 @@
         "enterpassword": "Введіть пароль",
         "errorentername": "Им'я має бути від 2 до 17 символів!",
         "firstname": "Введіть ваше им'я",
+        "enteronlyletters": "Введіть лише літери!",
         "lastname": "Введіть ваше прізвище",
         "mail": "Email",
         "remember": "Запам'ятати мене!",

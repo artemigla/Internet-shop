@@ -1,5 +1,6 @@
 import React from 'react';
 import style from './Styles/style.module.scss';
+import PropTypes from 'prop-types';
 const Pagination = ({ cartPerPage, totalCart, paginate }) => {
     const pageNumbers = [];
 
@@ -22,5 +23,11 @@ const Pagination = ({ cartPerPage, totalCart, paginate }) => {
             </ul>
         </div>
     )
+}
+
+Pagination.propTypes = {
+    cartPerPage: PropTypes.number.isRequired,
+    totalCart: PropTypes.number.isRequired,
+    paginate: PropTypes.func.isRequired
 }
 export default Pagination;
