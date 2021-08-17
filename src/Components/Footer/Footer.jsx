@@ -5,7 +5,7 @@ const Footer = () => {
     return (
         <footer className={style.footer}>
             <div className={style.navigation}>
-                <a href="https://t.me/simple_t_user" target="_blank" rel="noreferrer"><FaTelegram /></a>
+                <FaTelegram />
                 <a href="https://github.com/artemigla" target="_blank" rel="noreferrer"><FaGithub /></a>
                 <FaVk />
                 <FaYoutube />

@@ -3,6 +3,7 @@ import style from './Styles/Navbar.module.scss';
 import { BiMenu, BiX } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
 import { useTranslation } from "react-i18next";
+
 const Navbar = () => {
     const { t } = useTranslation();
     const [isOpen, setIsOpen] = useState(false);
@@ -18,4 +19,5 @@ const Navbar = () => {
         </nav>
     )
 }
+
 export default Navbar;

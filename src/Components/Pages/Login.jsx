@@ -70,6 +70,7 @@ const Login = () => {
                             onBlur={(e) => blurHandler(e)}
                             name="email"
                             type="email"
+                            autoComplete={"off"}
                             placeholder={t("description.enterlogin")}
                         />
 

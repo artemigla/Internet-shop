@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 const Signup = () => {
 
     const { t } = useTranslation();
+
     const [firstName, setFirstName] = useState("");
     const [firstNameDirty, setFirstNameDirty] = useState(false);
     const [firstNameError, setFirstNameError] = useState(t("description.inputfielderror"));
@@ -25,6 +26,7 @@ const Signup = () => {
     const [confirmPasswordDirty, setConfirmPasswordDirty] = useState(false);
     const [confirmPasswordError, setConfirmPasswordError] = useState(t("description.inputfielderror"));
 
+    const [remember, setRemember] = useState(true);
     const [formValid, setFormValid] = useState(false);
 
     const firstNameHandler = (e) => {
@@ -110,6 +112,22 @@ const Signup = () => {
         }
     }
 
+    const rememberUser = {
+        firstName,
+        lastName,
+        mail,
+        password,
+    }
+
+    const getRemember = () => {
+        setRemember(!remember)
+        if (remember) {
+            localStorage.setItem("rememberMy", JSON.stringify(rememberUser));
+        } else {
+            localStorage.setItem("rememberMy", JSON.stringify([]));
+        }
+    }
+
     useEffect(() => {
         if (emailError || passwordError || firstNameError || lastNameError || confirmPasswordError) {
             setFormValid(false);
@@ -152,6 +170,7 @@ const Signup = () => {
                         onBlur={e => blurHandler(e)}
                         name="email"
                         type="email"
+                        autoComplete={"off"}
                         placeholder={t("description.mail")}
                     />
                     <br /><br />
@@ -177,9 +196,9 @@ const Signup = () => {
                     />
                     <br /><br />
                     <div className={style.check}>
-                        <input type="checkbox" /><h5>{t("description.remember")}</h5>
+                        <input disabled={!formValid} type="checkbox" onChange={getRemember} /><h5>{t("description.remember")}</h5>
                     </div>
-                    <button disabled={!formValid}>{t("description.signup")} </button>
+                    <button disabled={!formValid} >{t("description.signup")} </button>
                 </div>
             </form>
         </div>

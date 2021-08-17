@@ -19,6 +19,7 @@
         "remember": "Remember me!",
         "addgood": "Add to cart",
         "sortprice": "Sort by price",
-        "sortname": "Sort by device name"
+        "sortname": "Sort by device name",
+        "delete": "Delete"
     }
 }

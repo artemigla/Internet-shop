@@ -7,6 +7,7 @@ import Signup from './Components/Pages/Signup';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Footer from './Components/Footer/Footer';
 import style from './Components/Header/Styles/Header.module.scss';
+
 const App = () => {
 
   const getTheme = () => {
@@ -17,7 +18,6 @@ const App = () => {
 
   const [theme, setTheme] = useState(getTheme());
 
-  const showBasket = localStorage.getItem("basket");
   useEffect(() => {
     localStorage.setItem("theme", JSON.stringify(theme));
   }, [theme]);
@@ -31,12 +31,13 @@ const App = () => {
         </div>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/basket" component={() => <Basket data={showBasket} />} />
+          <Route path="/basket" component={Basket} />
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
         </Switch>
       </Router>
       <Footer />
+
     </div>
   );
 }

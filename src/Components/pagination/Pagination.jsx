@@ -1,6 +1,7 @@
 import React from 'react';
 import style from './Styles/style.module.scss';
 import PropTypes from 'prop-types';
+
 const Pagination = ({ cartPerPage, totalCart, paginate }) => {
     const pageNumbers = [];
 

@@ -1,18 +1,50 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useState, useEffect } from 'react';
 import style from './Styles/Basket.module.scss';
+import { useTranslation } from "react-i18next";
+const Basket = () => {
+    const { t } = useTranslation();
+    const [basket, setBasket] = useState([]);
+    const [price, setPrice] = useState(1);
+    useEffect(() => {
+        const saveTask = localStorage.getItem("basket")
+        setBasket(JSON.parse(saveTask))
+    }, []);
+    useEffect(() => {
+        localStorage.setItem("basket", JSON.stringify(basket));
+    }, [basket]);
 
-const Basket = ({ data }) => {
+    const deleteCart = (id) => setBasket(basket.filter(item => item.id !== id));
 
+    const itemList = basket && basket.length > 0 ? (
+        basket.map((item) => {
+            return (
+                <div className={style.container} key={item.id}>
+                    <img src={item.img} alt={item.name} />
+                    <div className={style.info}>
+                        <h5>Device: {item.name}</h5>
+                        <h5>Price: {item.price}</h5>
+                    </div>
+                    <div className={style.posbtn}>
+                        <div className={style.flex}>
+                            <button className={style.counterminus} onClick={() => setPrice(price - 1)}>-</button>
+                            <p>{price}</p>
+                            <button className={style.counterplus} onClick={() => setPrice(price + 1)}>+</button>
+                        </div>
+                        <button className={style.btndelete}
+                            onClick={() => deleteCart(item.id)} >
+                            <h5>{t("description.delete")}</h5>
+                        </button>
+                    </div>
+                </div>
+            )
+        })
+    ) : (<h3>Cart is empty</h3>)
     return (
         <div className={style.basket}>
-            <h3>Basket</h3>
-            <h3>{data}</h3>
+            <div className={style.content}>
+                {itemList}
+            </div>
         </div>
     )
-}
-
-Basket.propTypes = {
-    data: PropTypes.string.isRequired
 }
 export default Basket;

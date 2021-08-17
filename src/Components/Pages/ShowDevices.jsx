@@ -2,20 +2,12 @@ import React from 'react';
 import style from './Styles/Home.module.scss';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
-const ShowDevices = ({ currentProducts, loading, search }) => {
+const ShowProduct = ({ addToCart, currentProducts, loading, search }) => {
     const { t } = useTranslation();
+
     if (loading) {
         <h3>Loading...</h3>
     }
-    const addToCart = (product) => {
-        let newCart = [...currentProducts];
-        let itemInCart = newCart.find(
-            (item) => product.name === item.name
-        );
-
-        itemInCart = { ...product };
-        localStorage.setItem("basket", JSON.stringify(itemInCart));
-    };
 
     const itemList = currentProducts.filter((item) => {
         if (search === "") {
@@ -35,7 +27,7 @@ const ShowDevices = ({ currentProducts, loading, search }) => {
                     <h4>{item.name}</h4>
                     <h5>{item.price}</h5>
                     <div className={style.downblockcontent}>
-                        <button onClick={() => addToCart(item)}>{t("description.addgood")}</button>
+                        <button onClick={() => addToCart(item)} >{t("description.addgood")}</button>
                     </div>
                 </div>
             </div>
@@ -49,9 +41,10 @@ const ShowDevices = ({ currentProducts, loading, search }) => {
     )
 }
 
-ShowDevices.propTypes = {
+ShowProduct.propTypes = {
+    addToCart: PropTypes.func.isRequired,
     currentProducts: PropTypes.array.isRequired,
     loading: PropTypes.bool.isRequired,
     search: PropTypes.string.isRequired
 }
-export default ShowDevices;
+export default ShowProduct;
