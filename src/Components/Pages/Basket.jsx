@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import style from './Styles/Basket.module.scss';
-import { useTranslation } from "react-i18next";
+import { MdDelete } from 'react-icons/md'
 const Basket = () => {
-    const { t } = useTranslation();
     const [basket, setBasket] = useState([]);
     const [price, setPrice] = useState(1);
     useEffect(() => {
@@ -30,10 +29,7 @@ const Basket = () => {
                             <p>{price}</p>
                             <button className={style.counterplus} onClick={() => setPrice(price + 1)}>+</button>
                         </div>
-                        <button className={style.btndelete}
-                            onClick={() => deleteCart(item.id)} >
-                            <h5>{t("description.delete")}</h5>
-                        </button>
+                        <MdDelete className={style.btndelete} onClick={() => deleteCart(item.id)} />
                     </div>
                 </div>
             )
